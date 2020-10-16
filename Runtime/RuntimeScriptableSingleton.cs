@@ -12,8 +12,6 @@ using UnityEditor;
 /// <typeparam name="T">Referencia circular a la propia clase de la que se quiere hacer Singleton</typeparam>
 public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton where T : RuntimeScriptableSingleton<T>
 {
-    public static List<BaseScriptableSingleton> RuntimeScriptableSingletons { get; private set; } = new List<BaseScriptableSingleton>();
-    
     private static T _instance;
     public static T Instance
     {
@@ -34,6 +32,7 @@ public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton wh
                 AssetDatabase.Refresh();
 #endif
             }
+            _instance.InitializeSingleton();
             return _instance;
         }
         set
@@ -46,28 +45,9 @@ public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton wh
     public static string ResourcesPath => "Assets/Resources/";
     public virtual string FilePath => ResourcesPath + typeof(T).Name + ".asset";
 
-    public abstract T Myself
-    {
-        get;
-    }
+    public T Myself => this as T;
 
-    public override void InitializeSingleton()
-    {
-        if (_instance == null)
-        {
-            Instance = Myself;
-            RuntimeScriptableSingletons.Add(this);
-        }
-        else if (_instance != this)
-        {
-            Debug.LogError("<Color=red> " + this + "  SCRIPTABLE_SINGLETON ALREADY EXIST CONFLICT </color>");
-        }
-    }
-
-    protected virtual void OnDisable()
-    {
-        _instance = null;
-    }
+    public  override void InitializeSingleton() { }
 }
 
 public abstract class BaseScriptableSingleton : ScriptableObject
