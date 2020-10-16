@@ -43,11 +43,12 @@ public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton wh
     }
 
     public static string ResourcesPath => "Assets/Resources/";
-    public virtual string FilePath => ResourcesPath + typeof(T).Name + ".asset";
+    public virtual string FileName =>  typeof(T).Name;
+    public virtual string FilePath => ResourcesPath + FileName + ".asset";
 
     public T Myself => this as T;
 
-    public  override void InitializeSingleton() { }
+    public override void InitializeSingleton() { }
 }
 
 public abstract class BaseScriptableSingleton : ScriptableObject
