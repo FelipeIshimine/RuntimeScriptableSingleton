@@ -2,7 +2,7 @@
   "name": "com.ishimine.runetimescriptablesetting",
   "displayName": "RuntimeScriptableSettings",
   "description": "Core package for creating RuntimeScriptableSettings mainly for managers or systems controllers",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "Unity": "2019.1",
   "author": {
     "name": "Felipe ishimine",

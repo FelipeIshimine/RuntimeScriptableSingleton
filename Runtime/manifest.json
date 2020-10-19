@@ -1,0 +1,18 @@
+{
+	"name":"com.ishimine.RuntimeScriptableSingleton",
+	"displayName": "RuntimeScriptableSingleton",
+	"version": "1.1.3",
+	"Unity": "2019.1",
+	"author": "Felipe Ishimine",
+	"description": "Core package for creating RuntimeScriptableSettings mainly for managers or systems controllers",
+	"dependencies":{  		 
+		
+	},
+	"keywords":
+	["same","state", "machine","Ishimine"],
+	"repository":
+	{
+		"type": "git",
+		"url": "https://github.com/FelipeIshimine/ScriptableSettings.git"
+	}
+}
