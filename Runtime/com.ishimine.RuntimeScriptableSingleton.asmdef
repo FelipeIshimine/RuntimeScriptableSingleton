@@ -1,5 +1,5 @@
 {
-    "name": "com.ishimine.RunetimeScriptableSingleton",
+    "name": "com.ishimine.RuntimeScriptableSingleton",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
