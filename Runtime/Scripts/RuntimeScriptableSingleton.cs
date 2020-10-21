@@ -4,6 +4,8 @@ using System.IO;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
 #endif
 
 /// <summary>
@@ -12,6 +14,16 @@ using UnityEditor;
 /// <typeparam name="T">Referencia circular a la propia clase de la que se quiere hacer Singleton</typeparam>
 public abstract class RuntimeScriptableSingleton<T> : BaseRuntimeScriptableSingleton where T : RuntimeScriptableSingleton<T>
 {
+    
+#if UNITY_EDITOR
+    public static class UpdateGit
+    {
+        [MenuItem("Window/Ishimine/Update/ScriptableSettings")]
+        public static void SelectMe() => Client.Add("https://github.com/FelipeIshimine/RuntimeScriptableSingleton.git");
+    }
+#endif
+    
+    
     private static T _instance;
     public static T Instance
     {
