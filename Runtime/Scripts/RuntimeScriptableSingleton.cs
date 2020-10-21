@@ -4,14 +4,26 @@ using System.IO;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
 #endif
 
 /// <summary>
 /// Singleton que sea auto instancia e inicializa dentro de la carpeta Resources
 /// </summary>
 /// <typeparam name="T">Referencia circular a la propia clase de la que se quiere hacer Singleton</typeparam>
-public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton where T : RuntimeScriptableSingleton<T>
+public abstract class RuntimeScriptableSingleton<T> : BaseRuntimeScriptableSingleton where T : RuntimeScriptableSingleton<T>
 {
+    
+#if UNITY_EDITOR
+    public static class UpdateGit
+    {
+        [MenuItem("Window/Ishimine/Update/RuntimeScriptableSingleton")]
+        public static void SelectMe() => Client.Add("https://github.com/FelipeIshimine/RuntimeScriptableSingleton.git");
+    }
+#endif
+    
+    
     private static T _instance;
     public static T Instance
     {
@@ -51,7 +63,7 @@ public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton wh
     public override void InitializeSingleton() { }
 }
 
-public abstract class BaseScriptableSingleton : ScriptableObject
+public abstract class BaseRuntimeScriptableSingleton : ScriptableObject
 {
     public abstract void InitializeSingleton();
 }
