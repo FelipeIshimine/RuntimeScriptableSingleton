@@ -15,13 +15,6 @@ using UnityEditor.PackageManager.Requests;
 public abstract class RuntimeScriptableSingleton<T> : BaseRuntimeScriptableSingleton where T : RuntimeScriptableSingleton<T>
 {
     
-#if UNITY_EDITOR
-    public static class UpdateGit
-    {
-        [MenuItem("Window/Ishimine/Update/RuntimeScriptableSingleton")]
-        public static void SelectMe() => Client.Add("https://github.com/FelipeIshimine/RuntimeScriptableSingleton.git");
-    }
-#endif
     
     
     private static T _instance;
@@ -65,5 +58,10 @@ public abstract class RuntimeScriptableSingleton<T> : BaseRuntimeScriptableSingl
 
 public abstract class BaseRuntimeScriptableSingleton : ScriptableObject
 {
+        
+    #if UNITY_EDITOR
+            [MenuItem("Window/Ishimine/Update/RuntimeScriptableSingleton")]
+            public static void SelectMe() => Client.Add("https://github.com/FelipeIshimine/RuntimeScriptableSingleton.git");
+    #endif
     public abstract void InitializeSingleton();
 }

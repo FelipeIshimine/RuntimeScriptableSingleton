@@ -2,7 +2,7 @@
   "name": "com.ishimine.runtimescriptablesingleton",
   "displayName": "RuntimeScriptableSingleton",
   "description": "Core package for creating RuntimeScriptableSingleton mainly for managers or systems controllers",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "Unity": "2019.1",
   "author": {
     "name": "Felipe ishimine",
