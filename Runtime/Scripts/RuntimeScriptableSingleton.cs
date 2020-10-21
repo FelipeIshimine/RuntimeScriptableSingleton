@@ -10,7 +10,7 @@ using UnityEditor;
 /// Singleton que sea auto instancia e inicializa dentro de la carpeta Resources
 /// </summary>
 /// <typeparam name="T">Referencia circular a la propia clase de la que se quiere hacer Singleton</typeparam>
-public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton where T : RuntimeScriptableSingleton<T>
+public abstract class RuntimeScriptableSingleton<T> : BaseRuntimeScriptableSingleton where T : RuntimeScriptableSingleton<T>
 {
     private static T _instance;
     public static T Instance
@@ -51,7 +51,7 @@ public abstract class RuntimeScriptableSingleton<T> : BaseScriptableSingleton wh
     public override void InitializeSingleton() { }
 }
 
-public abstract class BaseScriptableSingleton : ScriptableObject
+public abstract class BaseRuntimeScriptableSingleton : ScriptableObject
 {
     public abstract void InitializeSingleton();
 }
