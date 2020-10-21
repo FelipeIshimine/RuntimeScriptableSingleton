@@ -18,7 +18,7 @@ public abstract class RuntimeScriptableSingleton<T> : BaseRuntimeScriptableSingl
 #if UNITY_EDITOR
     public static class UpdateGit
     {
-        [MenuItem("Window/Ishimine/Update/ScriptableSettings")]
+        [MenuItem("Window/Ishimine/Update/RuntimeScriptableSingleton")]
         public static void SelectMe() => Client.Add("https://github.com/FelipeIshimine/RuntimeScriptableSingleton.git");
     }
 #endif
